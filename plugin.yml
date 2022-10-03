@@ -1,0 +1,10 @@
+name: Warps
+version: '${project.version}'
+main: de.beta.warpsys.Main
+api-version: 1.16
+authors: [ BetaGamerYouTube ]
+commands:
+  setwarp:
+  warp:
+  delwarp:
+  warps:
