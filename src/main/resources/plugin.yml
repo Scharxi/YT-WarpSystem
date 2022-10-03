@@ -1,0 +1,12 @@
+name: Warpsystem
+version: '${project.version}'
+main: me.betagameryoutube.warpsystem.Warpsystem
+api-version: 1.15
+authors: [ BetaGamerYouTube ]
+description: A simple warp system for your minecraft server
+website: https://www.youtube.com/channel/UCYMxp5ne5rzEFwMBP3dolkQ
+commands:
+  setwarp:
+  warp:
+  delwarp:
+  warps:
