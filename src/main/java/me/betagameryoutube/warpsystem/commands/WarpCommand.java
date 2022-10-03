@@ -29,7 +29,7 @@ public class WarpCommand implements CommandExecutor {
         }
 
         if (args.length != 1) {
-            p.sendMessage(Config.getPrefix() + "§7Usage: §c/setwarp <Warpname>");
+            p.sendMessage(Config.getPrefix() + "§7Usage: §c/warp <Warp>");
             return true;
         }
 
