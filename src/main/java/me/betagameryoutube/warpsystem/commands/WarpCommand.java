@@ -51,7 +51,7 @@ public class WarpCommand implements CommandExecutor {
 
             // TODO: Check if values are valid
             p.teleport(loc);
-            p.sendMessage(Config.getPrefix() + "§aYou have been teleportet!");
+            p.sendMessage(Config.getPrefix() + "§aYou have been teleported!");
         } else {
             p.sendMessage(Config.getPrefix() + "§cThat Warp does not exist!");
         }
