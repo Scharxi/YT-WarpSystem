@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class Command_Setwarp implements CommandExecutor {
+public class SetWarpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

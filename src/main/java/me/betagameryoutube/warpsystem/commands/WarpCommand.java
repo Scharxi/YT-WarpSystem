@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 
-public class Command_Warp implements CommandExecutor {
+public class WarpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

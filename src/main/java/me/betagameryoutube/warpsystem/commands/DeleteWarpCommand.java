@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 
-public class Command_Delwarp implements CommandExecutor {
+public class DeleteWarpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
