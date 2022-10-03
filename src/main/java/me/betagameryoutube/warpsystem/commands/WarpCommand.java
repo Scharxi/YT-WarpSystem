@@ -23,7 +23,7 @@ public class WarpCommand implements CommandExecutor {
         }
 
         Player p = (Player) sender;
-        if (!p.hasPermission("warps.set")) {
+        if (!p.hasPermission("warps.use")) {
             p.sendMessage(Config.getPrefix() + "§cNo Permission!");
             return true;
         }
