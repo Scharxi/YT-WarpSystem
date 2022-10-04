@@ -1,6 +1,7 @@
 package me.betagameryoutube.warpsystem.commands;
 
-import me.betagameryoutube.warpsystem.Config;
+import me.betagameryoutube.warpsystem.PluginConfig;
+import me.betagameryoutube.warpsystem.WarpSystem;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,12 +16,12 @@ public class DeleteWarpCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length != 1) {
-            sender.sendMessage(Config.getPrefix() + "§7Usage: §c/delwarp <Warp>");
+            sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§7Usage: §c/delwarp <Warp>");
             return true;
         }
 
         if (!Pattern.matches("[a-zA-Z]+", args[0].toLowerCase())) {
-            sender.sendMessage(Config.getPrefix() + "§cWarpname can only contain letters!");
+            sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cWarpname can only contain letters!");
             return true;
         }
 
@@ -28,9 +29,9 @@ public class DeleteWarpCommand implements CommandExecutor {
             File file = new File("./plugins/Warps/warps/" + args[0].toLowerCase() + ".yml");
             if (file.exists()) {
                 file.delete();
-                sender.sendMessage(Config.getPrefix() + "§aThe Warp was deleted!");
+                sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§aThe Warp was deleted!");
             } else {
-                sender.sendMessage(Config.getPrefix() + "§cThat Warp does not exist!");
+                sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cThat Warp does not exist!");
             }
             return true;
         }
@@ -38,16 +39,16 @@ public class DeleteWarpCommand implements CommandExecutor {
         Player p = (Player) sender;
 
         if (!p.hasPermission("warps.delete")) {
-            p.sendMessage(Config.getPrefix() + "§cNo Permission!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cNo Permission!");
             return true;
         }
 
         File file = new File("./plugins/Warps/warps/" + args[0].toLowerCase() + ".yml");
         if (file.exists()) {
             file.delete();
-            p.sendMessage(Config.getPrefix() + "§aThe Warp was deleted!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§aThe Warp was deleted!");
         } else {
-            p.sendMessage(Config.getPrefix() + "§cThat Warp does not exist!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cThat Warp does not exist!");
         }
 
         return false;

@@ -1,6 +1,7 @@
 package me.betagameryoutube.warpsystem.commands;
 
-import me.betagameryoutube.warpsystem.Config;
+import me.betagameryoutube.warpsystem.PluginConfig;
+import me.betagameryoutube.warpsystem.WarpSystem;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,7 @@ public class WarpsCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length > 0) {
-            sender.sendMessage(Config.getPrefix() + "§7Usage: §c/warps");
+            sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§7Usage: §c/warps");
             return true;
         }
 
@@ -34,17 +35,17 @@ public class WarpsCommand implements CommandExecutor {
             }
             String warps = warpList.toString().replace("[", "").replace("]", "");
             if (warpList.isEmpty()) {
-                sender.sendMessage(Config.getPrefix() + "§bThere are no Warps!");
+                sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§bThere are no Warps!");
                 return true;
             }
 
-            sender.sendMessage(Config.getPrefix() + "§bWarps: §e" + warps);
+            sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§bWarps: §e" + warps);
             return true;
         }
 
         Player p = (Player) sender;
         if (!p.hasPermission("warps.list")) {
-            p.sendMessage(Config.getPrefix() + "§cNo Permission!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cNo Permission!");
             return true;
         }
 
@@ -61,10 +62,10 @@ public class WarpsCommand implements CommandExecutor {
         }
         String warps = warpList.toString().replace("[", "").replace("]", "");
         if (warpList.isEmpty()) {
-            p.sendMessage(Config.getPrefix() + "§bThere are no Warps!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§bThere are no Warps!");
             return true;
         }
-        p.sendMessage(Config.getPrefix() + "§bWarps: §e" + warps);
+        p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§bWarps: §e" + warps);
         return false;
     }
 }

@@ -1,6 +1,6 @@
 package me.betagameryoutube.warpsystem.commands;
 
-import me.betagameryoutube.warpsystem.Config;
+import me.betagameryoutube.warpsystem.WarpSystem;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,23 +17,23 @@ public final class SetWarpCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Config.getPrefix() + "§cYou must be a Player!");
+            sender.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cYou must be a Player!");
             return true;
         }
 
         Player p = (Player) sender;
         if (!p.hasPermission("warps.set")) {
-            p.sendMessage(Config.getPrefix() + "§cNo Permission!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cNo Permission!");
             return true;
         }
 
         if (args.length != 1) {
-            p.sendMessage(Config.getPrefix() + "§7Usage: §c/setwarp <Warpname>");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§7Usage: §c/setwarp <Warpname>");
             return true;
         }
 
         if (!Pattern.matches("[a-zA-Z]+", args[0].toLowerCase())) {
-            p.sendMessage(Config.getPrefix() + "§cWarpname can only contain letters!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cWarpname can only contain letters!");
             return true;
         }
 
@@ -52,9 +52,9 @@ public final class SetWarpCommand implements CommandExecutor {
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
-            p.sendMessage(Config.getPrefix() + "§aWarp set!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§aWarp set!");
         } else {
-            p.sendMessage(Config.getPrefix() + "§cThis Warp already exist!");
+            p.sendMessage(WarpSystem.instance().pluginConfig().getPrefix() + "§cThis Warp already exist!");
         }
         return false;
     }

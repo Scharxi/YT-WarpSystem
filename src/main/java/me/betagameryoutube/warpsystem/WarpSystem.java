@@ -7,12 +7,21 @@ import me.betagameryoutube.warpsystem.commands.WarpsCommand;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-
 public final class WarpSystem extends JavaPlugin {
+
+    private static WarpSystem instance;
+    private PluginConfig pluginConfig;
+
     @Override
     public void onEnable() {
+
+        if (instance == null) {
+           instance = this;
+        }
+
+        pluginConfig = new PluginConfig(this);
+        pluginConfig.load();
+
         loadConfig();
         getCommand("setwarp").setExecutor(new SetWarpCommand());
         getCommand("warp").setExecutor(new WarpCommand());
@@ -26,14 +35,17 @@ public final class WarpSystem extends JavaPlugin {
     }
 
     public void loadConfig() {
-        File file = new File("./plugins/Warps/config.yml");
-        YamlConfiguration yfile = YamlConfiguration.loadConfiguration(file);
-        yfile.addDefault("Prefix", "&aWarpSystem &7» ");
-        yfile.options().copyDefaults(true);
-        try {
-            yfile.save(file);
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        YamlConfiguration config = pluginConfig().getConfigFile();
+        config.addDefault("Prefix", "&aWarpSystem &7» ");
+        config.options().copyDefaults(true);
+        pluginConfig.save();
+    }
+
+    public static WarpSystem instance() {
+        return instance;
+    }
+
+    public PluginConfig pluginConfig() {
+        return pluginConfig;
     }
 }
